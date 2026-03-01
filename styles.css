@@ -32,6 +32,14 @@ input, button, textarea, select {
   font: inherit;
 }
 
+ul {
+    padding: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
@@ -169,8 +177,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar li {
-    list-style-type: none;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -183,10 +189,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* CONTENT */
 .content {
+    grid-row: 2 / 3;
     grid-column: 2 / 3;
 
     display: grid;
-    grid-template-columns: 1fr 0.66fr;
+    grid-template-columns: 3fr 1fr;
+    gap: 24px;
 
     padding: 24px;
     background-color: rgb(226, 232, 239);
@@ -195,30 +203,73 @@ h1, h2, h3, h4, h5, h6 {
 .content .projects {
     grid-row: 1 / 3;
     grid-column: 1 / 2;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
 }
 
-.content .projects h2 {
-    grid-column: 1 / 3;
+.content .projects .cards {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.content .projects .card {
+    padding: 24px;
+
+    background-color: white;
+    border-left: 6px solid orange;
+    border-radius: 10px;
+}
+
+.content .projects .card p.project-title {
+    font-size: 1.1em;
+    font-weight: 700;
 }
 
 .content .projects .card div {
     display: flex;
     justify-content: end;
+    gap: 12px;
+    padding: 12px;
 }
 
 .content .announcements,
 .content .trending {
     grid-column: 2 / 3;
+    display: grid;
+    grid-template-rows: 36px 1fr;
+    grid-template-columns: 1fr;
 }
 
-.content .trending div {
-    height: 3em;
+.content .announcements .card,
+.content .trending .card {
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
 }
 
-.content .trending div img {
+.content .announcements .title {
+    font-weight: 700;
+}
+
+.content .trending ul {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content .trending li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+}
+
+.content .trending li p.trending-user {
+    font-weight: 700;
+}
+
+.content .trending img {
+    height: 3em;
     border-radius: 50%;
 }
